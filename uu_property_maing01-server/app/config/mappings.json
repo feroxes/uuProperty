@@ -25,6 +25,11 @@
         "realization": "api/controllers/LocationController.create",
         "httpMethod": "POST",
         "type": "CMD"
+      },
+      "location/update": {
+        "realization": "api/controllers/LocationController.update",
+        "httpMethod": "POST",
+        "type": "CMD"
       }
     }
   }

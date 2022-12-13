@@ -15,6 +15,11 @@
         "realization": "index.html",
         "httpMethod": "GET",
         "type": "UVE"
+      },
+      "sys/uuAppWorkspace/load": {
+        "realization": "api/controllers/PropertyMainController.workspaceLoad",
+        "httpMethod": "GET",
+        "type": "CMD"
       }
     }
   }

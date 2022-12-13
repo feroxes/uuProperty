@@ -57,6 +57,22 @@
       "workplace/list": {
         "sysStateList": ["active"],
         "profileList": ["Authorities"]
+      },
+      "inventoryItem/create": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities"]
+      },
+      "inventoryItem/update": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities"]
+      },
+      "inventoryItem/list": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities"]
+      },
+      "inventoryItem/delete": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities"]
       }
     }
   }

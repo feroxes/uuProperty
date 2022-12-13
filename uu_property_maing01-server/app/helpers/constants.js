@@ -4,6 +4,7 @@ const Constants = {
     LOCATION: "location",
     WORKPLACE: "workplace",
     CATEGORY: "category",
+    INVENTORY_ITEM: "inventoryItem",
   },
 
   ErrorCodes: {
@@ -11,7 +12,8 @@ const Constants = {
   },
 
   States: {
-    ACTIVE: "active",
+    ON_STORAGE: "ON_STORAGE",
+    FINAL_STATES: ["SOLD"],
   },
 
   Profiles: {

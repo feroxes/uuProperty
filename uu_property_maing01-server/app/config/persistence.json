@@ -19,6 +19,10 @@
         "workplace": {
           "realization": "dao/WorkplaceMongo",
           "maxNoi": 1000
+        },
+        "inventoryItem": {
+          "realization": "dao/InventoryItemMongo",
+          "maxNoi": 100000
         }
       }
     }

@@ -65,6 +65,26 @@
         "realization": "api/controllers/WorkplaceController.list",
         "httpMethod": "GET",
         "type": "CMD"
+      },
+      "inventoryItem/create": {
+        "realization": "api/controllers/InventoryItemController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "inventoryItem/update": {
+        "realization": "api/controllers/InventoryItemController.update",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "inventoryItem/list": {
+        "realization": "api/controllers/InventoryItemController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "inventoryItem/delete": {
+        "realization": "api/controllers/InventoryItemController.delete",
+        "httpMethod": "POST",
+        "type": "CMD"
       }
     }
   }

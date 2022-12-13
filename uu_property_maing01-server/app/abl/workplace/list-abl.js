@@ -13,7 +13,7 @@ class ListAbl {
   }
 
   async list(awid, dtoIn, uuAppErrorMap = {}) {
-    const validationResult = this.validator.validate("listDtoInType", dtoIn);
+    const validationResult = this.validator.validate("workplaceListDtoInType", dtoIn);
     uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
       validationResult,

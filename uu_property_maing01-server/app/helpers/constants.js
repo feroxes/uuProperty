@@ -3,6 +3,7 @@ const Constants = {
     PROPERTY_MAIN: "propertyMain",
     LOCATION: "location",
     WORKPLACE: "workplace",
+    CATEGORY: "category",
   },
 
   ErrorCodes: {

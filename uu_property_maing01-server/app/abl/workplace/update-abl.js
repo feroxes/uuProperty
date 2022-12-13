@@ -15,7 +15,7 @@ class UpdateAbl {
   }
 
   async update(awid, dtoIn, uuAppErrorMap = {}) {
-    const validationResult = this.validator.validate("updateDtoInType", dtoIn);
+    const validationResult = this.validator.validate("workplaceUpdateDtoInType", dtoIn);
     uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
       validationResult,

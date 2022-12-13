@@ -34,6 +34,18 @@
         "sysStateList": ["active"],
         "profileList": ["Authorities"]
       },
+      "category/create": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities"]
+      },
+      "category/update": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities"]
+      },
+      "category/list": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities"]
+      },
       "workplace/create": {
         "sysStateList": ["active"],
         "profileList": ["Authorities"]

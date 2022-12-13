@@ -15,7 +15,7 @@ class CreateAbl {
   }
 
   async create(awid, dtoIn, uuAppErrorMap = {}) {
-    const validationResult = this.validator.validate("createDtoInType", dtoIn);
+    const validationResult = this.validator.validate("workplaceCreateDtoInType", dtoIn);
     uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
       validationResult,

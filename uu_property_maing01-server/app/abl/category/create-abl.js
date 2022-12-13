@@ -2,18 +2,18 @@
 const { Validator } = require("uu_appg01_server").Validation;
 const { DaoFactory } = require("uu_appg01_server").ObjectStore;
 const { ValidationHelper } = require("uu_appg01_server").AppServer;
-const Errors = require("../../api/errors/location-error.js").Create;
-const Warnings = require("../../api/warnings/location-warnings.js").Create;
+const Errors = require("../../api/errors/category-error.js").Create;
+const Warnings = require("../../api/warnings/category-warnings.js").Create;
 const { Schemas, ErrorCodes } = require("../../helpers/constants.js");
 
 class CreateAbl {
   constructor() {
     this.validator = Validator.load();
-    this.dao = DaoFactory.getDao(Schemas.LOCATION);
+    this.dao = DaoFactory.getDao(Schemas.CATEGORY);
   }
 
   async create(awid, dtoIn, uuAppErrorMap = {}) {
-    const validationResult = this.validator.validate("locationCreateDtoInType", dtoIn);
+    const validationResult = this.validator.validate("categoryCreateDtoInType", dtoIn);
     uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
       validationResult,
@@ -21,16 +21,16 @@ class CreateAbl {
       Errors.InvalidDtoIn
     );
 
-    let location;
+    let category;
     try {
-      location = await this.dao.create({ ...dtoIn, awid });
+      category = await this.dao.create({ ...dtoIn, awid });
     } catch (e) {
       if (e.code === ErrorCodes.duplicateKey) {
-        throw new Errors.LocationAlreadyExists({ uuAppErrorMap }, e);
-      } else throw new Errors.LocationDaoCreateFailed({ uuAppErrorMap }, e);
+        throw new Errors.CategoryAlreadyExists({ uuAppErrorMap }, e);
+      } else throw new Errors.CategoryDaoCreateFailed({ uuAppErrorMap }, e);
     }
 
-    return { ...location, uuAppErrorMap };
+    return { ...category, uuAppErrorMap };
   }
 }
 

@@ -36,6 +36,21 @@
         "httpMethod": "GET",
         "type": "CMD"
       },
+      "category/create": {
+        "realization": "api/controllers/CategoryController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "category/update": {
+        "realization": "api/controllers/CategoryController.update",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "category/list": {
+        "realization": "api/controllers/CategoryController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
       "workplace/create": {
         "realization": "api/controllers/WorkplaceController.create",
         "httpMethod": "POST",

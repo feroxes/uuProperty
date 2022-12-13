@@ -1,16 +1,16 @@
 /* eslint-disable */
-const locationCreateDtoInType = shape({
+const categoryCreateDtoInType = shape({
   name: string(512).isRequired(),
-  address: string(512)
+  description: string(5000)
 });
 
-const locationUpdateDtoInType = shape({
+const categoryUpdateDtoInType = shape({
   id: id().isRequired(),
   name: string(512),
-  address: string(512)
+  description: string(5000)
 });
 
-const locationListDtoInType = shape({
+const categoryListDtoInType = shape({
   pageInfo: shape({
     pageIndex: integer(),
     pageSize: integer(),

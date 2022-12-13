@@ -2,6 +2,7 @@ const Constants = {
   Schemas: {
     PROPERTY_MAIN: "propertyMain",
     LOCATION: "location",
+    WORKPLACE: "workplace",
   },
 
   ErrorCodes: {

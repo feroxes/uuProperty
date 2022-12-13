@@ -33,6 +33,18 @@
       "location/list": {
         "sysStateList": ["active"],
         "profileList": ["Authorities"]
+      },
+      "workplace/create": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities"]
+      },
+      "workplace/update": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities"]
+      },
+      "workplace/list": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities"]
       }
     }
   }

@@ -35,6 +35,21 @@
         "realization": "api/controllers/LocationController.list",
         "httpMethod": "GET",
         "type": "CMD"
+      },
+      "workplace/create": {
+        "realization": "api/controllers/WorkplaceController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "workplace/update": {
+        "realization": "api/controllers/WorkplaceController.update",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "workplace/list": {
+        "realization": "api/controllers/WorkplaceController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
       }
     }
   }

@@ -11,6 +11,10 @@
         "location": {
           "realization": "dao/LocationMongo",
           "maxNoi": 100
+        },
+        "workplace": {
+          "realization": "dao/WorkplaceMongo",
+          "maxNoi": 1000
         }
       }
     }

@@ -10,3 +10,10 @@ const updateDtoInType = shape({
   name: string(512),
   address: string(512)
 });
+
+const listDtoInType = shape({
+  pageInfo: shape({
+    pageIndex: integer(),
+    pageSize: integer(),
+  }),
+});

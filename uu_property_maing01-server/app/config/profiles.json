@@ -29,6 +29,10 @@
       "location/update": {
         "sysStateList": ["active"],
         "profileList": ["Authorities"]
+      },
+      "location/list": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities"]
       }
     }
   }

@@ -65,4 +65,16 @@ const Update = {
   },
 };
 
-module.exports = { Create, Update };
+const List = {
+  UC_CODE: `${PropertyMainUseCaseError.ERROR_PREFIX}/location/list/`,
+
+  InvalidDtoIn: class extends PropertyMainUseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${List.UC_CODE}invalidDtoIn`;
+      this.message = "DtoIn is not valid.";
+    }
+  },
+};
+
+module.exports = { Create, Update, List };

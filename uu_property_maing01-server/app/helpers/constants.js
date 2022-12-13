@@ -17,6 +17,11 @@ const Constants = {
     USERS: "Users",
   },
 
+  DefaultPageInfo: {
+    pageIndex: 0,
+    pageSize: 1000,
+  },
+
   DEFAULT_PAGE_INDEX: 0,
   DEFAULT_PAGE_SIZE: 1000,
 };

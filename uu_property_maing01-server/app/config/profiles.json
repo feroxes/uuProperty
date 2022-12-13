@@ -21,6 +21,10 @@
       "sys/uuAppWorkspace/load": {
         "sysStateList": ["active"],
         "profileList": ["Public"]
+      },
+      "location/create": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities"]
       }
     }
   }

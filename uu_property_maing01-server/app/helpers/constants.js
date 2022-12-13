@@ -1,6 +1,11 @@
 const Constants = {
   Schemas: {
     PROPERTY_MAIN: "propertyMain",
+    LOCATION: "location",
+  },
+
+  ErrorCodes: {
+    duplicateKey: "uu-app-objectstore/duplicateKey",
   },
 
   States: {

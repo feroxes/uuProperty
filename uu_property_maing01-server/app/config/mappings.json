@@ -20,6 +20,11 @@
         "realization": "api/controllers/PropertyMainController.workspaceLoad",
         "httpMethod": "GET",
         "type": "CMD"
+      },
+      "location/create": {
+        "realization": "api/controllers/LocationController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
       }
     }
   }

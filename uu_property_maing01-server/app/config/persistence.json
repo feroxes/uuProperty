@@ -5,7 +5,8 @@
       "realization": "MongoDB",
       "schemaMap": {
         "propertyMain": {
-          "realization": "dao/PropertyMainMongo"
+          "realization": "dao/PropertyMainMongo",
+          "maxNoi": 1
         }
       }
     }

@@ -1,25 +1,35 @@
 const { TestHelper } = require("uu_appg01_server-test");
+const DefaultDtoIn = require("../default-dto-in.js");
+const ValidateHelper = require("../utils/validate-helper");
+const { Helper, Workspace, Server, PropertyTestHelper } = require("../utils/property-main-test-helper.js");
 
 beforeAll(async () => {
-  await TestHelper.setup();
+  await Server.start();
+  await Workspace.setup();
+});
+
+beforeEach(async () => {
+  await Workspace.dropDatabase();
   await TestHelper.initUuSubAppInstance();
   await TestHelper.createUuAppWorkspace();
 });
 
-afterAll(async () => {
-  await TestHelper.teardown();
+afterEach(() => {
+  jest.restoreAllMocks();
 });
+
+afterAll(async () => {
+  await Workspace.teardown();
+  await Server.stop();
+});
+
+function expectedHds(response) {
+  ValidateHelper.validateBaseObjectData(response);
+}
 
 describe("Testing the init uuCmd...", () => {
   test("HDS", async () => {
-    let session = await TestHelper.login("AwidLicenseOwner", false, false);
-
-    let dtoIn = {
-      uuAppProfileAuthorities: "urn:uu:GGALL",
-    };
-    let result = await TestHelper.executePostCommand("sys/uuAppWorkspace/init", dtoIn, session);
-
-    expect(result.status).toEqual(200);
-    expect(result.data.uuAppErrorMap).toBeDefined();
+    const response = await PropertyTestHelper.init();
+    expectedHds(response);
   });
 });

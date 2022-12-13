@@ -12,6 +12,14 @@ const Init = {
     }
   },
 
+  UuPropertyAlreadyInitialized: class extends PropertyMainUseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${Init.UC_CODE}uuPropertyAlreadyInitialized`;
+      this.message = "uuProperty already initialized.";
+    }
+  },
+
   SchemaDaoCreateSchemaFailed: class extends PropertyMainUseCaseError {
     constructor() {
       super(...arguments);
@@ -21,19 +29,12 @@ const Init = {
     }
   },
 
-  SetProfileFailed: class extends PropertyMainUseCaseError {
+  UuPropertyDaoCreateFailed: class extends PropertyMainUseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Init.UC_CODE}sys/setProfileFailed`;
-      this.message = "Set profile failed.";
-    }
-  },
-
-  CreateAwscFailed: class extends PropertyMainUseCaseError {
-    constructor() {
-      super(...arguments);
-      this.code = `${Init.UC_CODE}createAwscFailed`;
-      this.message = "Create uuAwsc failed.";
+      this.status = 500;
+      this.code = `${Init.UC_CODE}uuPropertyDaoCreateFailed`;
+      this.message = "uuProperty DAO create failed.";
     }
   },
 };

@@ -1,0 +1,35 @@
+{
+  "name": "uuapp-mock-server",
+  "version": "1.1.0",
+  "description": "Implementation of mock server to test integration of uuApps",
+  "main": "index.js",
+  "spec": "nodejs-app; uu_appg01@1.7.0",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "uu_appg01_workspace": "^3.0.0",
+    "node-rsa": "^1.0.1",
+    "jsonwebtoken": "^8.3.0",
+    "pem-jwk": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "5.16.0",
+    "eslint-plugin-node": "7.0.1",
+    "babel-eslint": "^10.1.0",
+    "jest": "24.8.0",
+    "prettier": "1.18.2",
+    "eslint-config-prettier": "5.1.0",
+    "eslint-plugin-prettier": "3.1.0",
+    "eslint-plugin-json": "1.4.0"
+  },
+  "engines": {
+    "node": ">=10.16.0"
+  },
+  "keywords": [],
+  "author": "Milan Martinek",
+  "license": "MIT",
+  "prettier": {
+    "printWidth": 120
+  }
+}

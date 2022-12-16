@@ -13,6 +13,7 @@ class UpdateAbl {
     this.dao = DaoFactory.getDao(Schemas.INVENTORY_ITEM);
     this.workplaceDao = DaoFactory.getDao(Schemas.WORKPLACE);
     this.locationDao = DaoFactory.getDao(Schemas.LOCATION);
+    this.categoryDao = DaoFactory.getDao(Schemas.CATEGORY);
   }
 
   async update(awid, dtoIn, uuAppErrorMap = {}) {
@@ -56,6 +57,13 @@ class UpdateAbl {
       }
     }
 
+    const categoryId = dtoIn.categoryId || inventoryItem.categoryId;
+
+    const category = await this.categoryDao.get(awid, categoryId);
+    if (!category) {
+      throw new Errors.CategoryDoesNotExist({ uuAppErrorMap }, { id: categoryId });
+    }
+
     const locationIdForCheck = locationForUpdate?.id || location.id;
     const workplaceForCheck = workplaceForUpdate || workplace;
 
@@ -69,6 +77,7 @@ class UpdateAbl {
     };
     updateDtoIn.locationId = ObjectId(updateDtoIn.locationId);
     updateDtoIn.workplaceId = ObjectId(updateDtoIn.workplaceId);
+    updateDtoIn.categoryId = ObjectId(updateDtoIn.categoryId);
 
     if (dtoIn.state && dtoIn.state !== inventoryItem.state) {
       updateDtoIn.lifecycle.unshift({
@@ -114,10 +123,12 @@ class UpdateAbl {
       ...inventoryItem,
       workplace: workplaceForUpdate || workplace,
       location: locationForUpdate || location,
+      category,
       uuAppErrorMap,
     };
     delete dtoOut.location.sys;
     delete dtoOut.workplace.sys;
+    delete dtoOut.category.sys;
     return dtoOut;
   }
 }

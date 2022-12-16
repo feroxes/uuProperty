@@ -36,6 +36,14 @@ const Create = {
     }
   },
 
+  CategoryDaoDoesNotExist: class extends PropertyMainUseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${Create.UC_CODE}categoryDaoDoesNotExist`;
+      this.message = "Category does not exist.";
+    }
+  },
+
   InventoryItemAlreadyExists: class extends PropertyMainUseCaseError {
     constructor() {
       super(...arguments);
@@ -69,6 +77,14 @@ const Update = {
       super(...arguments);
       this.code = `${Update.UC_CODE}locationDoesNotExist`;
       this.message = "Location does not exist.";
+    }
+  },
+
+  CategoryDoesNotExist: class extends PropertyMainUseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${Update.UC_CODE}categoryDoesNotExist`;
+      this.message = "Category does not exist.";
     }
   },
 

@@ -13,6 +13,7 @@ class CreateAbl {
     this.dao = DaoFactory.getDao(Schemas.INVENTORY_ITEM);
     this.workplaceDao = DaoFactory.getDao(Schemas.WORKPLACE);
     this.locationDao = DaoFactory.getDao(Schemas.LOCATION);
+    this.categoryDao = DaoFactory.getDao(Schemas.CATEGORY);
   }
 
   async create(awid, dtoIn, uuAppErrorMap = {}) {
@@ -42,6 +43,11 @@ class CreateAbl {
       throw new Errors.LocationDoesNotBelongToWorkplace({ uuAppErrorMap });
     }
 
+    const category = await this.categoryDao.get(awid, dtoIn.categoryId);
+    if (!category) {
+      throw new Errors.CategoryDaoDoesNotExist({ uuAppErrorMap }, { categoryId: dtoIn.categoryId });
+    }
+
     dtoIn.lifecycle = [
       {
         eventDate: new Date(),
@@ -60,7 +66,8 @@ class CreateAbl {
 
     delete location.sys;
     delete workplace.sys;
-    return { ...inventoryItem, location, workplace, uuAppErrorMap };
+    delete category.sys;
+    return { ...inventoryItem, location, workplace, category, uuAppErrorMap };
   }
 }
 

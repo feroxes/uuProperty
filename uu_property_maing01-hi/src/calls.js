@@ -45,6 +45,21 @@ const Calls = {
   getCommandUri(useCase) {
     return CALLS_BASE_URI + useCase.replace(/^\/+/, "");
   },
+
+  LOCATION: {
+    load(dtoIn) {
+      let commandUri = Calls.getCommandUri("location/list");
+      return Calls.call("get", commandUri, dtoIn);
+    },
+    create(dtoIn) {
+      let commandUri = Calls.getCommandUri("location/create");
+      return Calls.call("post", commandUri, dtoIn);
+    },
+    update(dtoIn) {
+      let commandUri = Calls.getCommandUri("location/update");
+      return Calls.call("post", commandUri, dtoIn);
+    },
+  },
 };
 
 export default Calls;

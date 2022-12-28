@@ -1,20 +1,16 @@
-import { Utils } from "uu5g05";
-import Config from "../../config/config.js";
+import UU5 from "uu5g04";
+import Config from "../../../bricks/config/config.js";
 
-const TAG = Config.TAG + "Core.";
+const TAG = Config.TAG + "Location.";
 
 export default {
   ...Config,
-
   TAG,
-  Css: Utils.Css.createCssModule(
+  Css: UU5.Common.Css.createCssModule(
     TAG.replace(/\.$/, "")
       .toLowerCase()
       .replace(/\./g, "-")
       .replace(/[^a-z-]/g, ""),
     process.env.NAME + "/" + process.env.OUTPUT_NAME + "@" + process.env.VERSION // this helps preserve proper order of styles among loaded libraries
   ),
-  ROUTES: {
-    HOME: "home",
-  },
 };

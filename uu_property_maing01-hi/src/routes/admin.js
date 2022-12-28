@@ -3,7 +3,9 @@ import { createVisualComponent, Lsi, useState, useEffect, useRoute } from "uu5g0
 import { Tabs } from "uu5g05-elements";
 import { withRoute } from "uu_plus4u5g02-app";
 import LocationProvider from "../core/location/location-provider.js";
-import LocationList from "../core/location/list/list.js";
+import CategoryProvider from "../core/category/category-provider.js";
+import LocationList from "../core/location/list/location-list.js";
+import CategoryList from "../core/category/list/category-list.js";
 
 import Config from "./config/config.js";
 import RouteBar from "../core/route-bar.js";
@@ -53,6 +55,12 @@ let Admin = createVisualComponent({
           children: <LocationList />,
           code: "locations",
         },
+        {
+          label: <Lsi lsi={LsiData.category} />,
+          icon: "mdi-shape",
+          children: <CategoryList />,
+          code: "category",
+        },
       ];
     }
     //@@viewOff:private
@@ -65,14 +73,16 @@ let Admin = createVisualComponent({
       <div>
         <RouteBar />
         <LocationProvider>
-          <Tabs
-            itemList={getItemList()}
-            activeCode={activeCode}
-            onChange={({ activeCode }) => {
-              setActiveCode(activeCode);
-              setRoute("admin", { activeCode });
-            }}
-          />
+          <CategoryProvider>
+            <Tabs
+              itemList={getItemList()}
+              activeCode={activeCode}
+              onChange={({ activeCode }) => {
+                setActiveCode(activeCode);
+                setRoute("admin", { activeCode });
+              }}
+            />
+          </CategoryProvider>
         </LocationProvider>
       </div>
     );

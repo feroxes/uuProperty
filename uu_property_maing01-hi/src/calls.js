@@ -60,6 +60,21 @@ const Calls = {
       return Calls.call("post", commandUri, dtoIn);
     },
   },
+
+  CATEGORY: {
+    load(dtoIn) {
+      let commandUri = Calls.getCommandUri("category/list");
+      return Calls.call("get", commandUri, dtoIn);
+    },
+    create(dtoIn) {
+      let commandUri = Calls.getCommandUri("category/create");
+      return Calls.call("post", commandUri, dtoIn);
+    },
+    update(dtoIn) {
+      let commandUri = Calls.getCommandUri("category/update");
+      return Calls.call("post", commandUri, dtoIn);
+    },
+  },
 };
 
 export default Calls;

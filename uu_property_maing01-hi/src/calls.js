@@ -75,6 +75,21 @@ const Calls = {
       return Calls.call("post", commandUri, dtoIn);
     },
   },
+
+  WORKPLACE: {
+    load(dtoIn) {
+      let commandUri = Calls.getCommandUri("workplace/list");
+      return Calls.call("get", commandUri, dtoIn);
+    },
+    create(dtoIn) {
+      let commandUri = Calls.getCommandUri("workplace/create");
+      return Calls.call("post", commandUri, dtoIn);
+    },
+    update(dtoIn) {
+      let commandUri = Calls.getCommandUri("workplace/update");
+      return Calls.call("post", commandUri, dtoIn);
+    },
+  },
 };
 
 export default Calls;

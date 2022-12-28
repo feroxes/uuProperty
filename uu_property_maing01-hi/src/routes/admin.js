@@ -4,8 +4,11 @@ import { Tabs } from "uu5g05-elements";
 import { withRoute } from "uu_plus4u5g02-app";
 import LocationProvider from "../core/location/location-provider.js";
 import CategoryProvider from "../core/category/category-provider.js";
+import WorkplaceProvider from "../core/workplace/workplace-provider.js";
+
 import LocationList from "../core/location/list/location-list.js";
 import CategoryList from "../core/category/list/category-list.js";
+import WorkplaceList from "../core/workplace/list/workplace-list.js";
 
 import Config from "./config/config.js";
 import RouteBar from "../core/route-bar.js";
@@ -61,6 +64,12 @@ let Admin = createVisualComponent({
           children: <CategoryList />,
           code: "category",
         },
+        {
+          label: <Lsi lsi={LsiData.workplace} />,
+          icon: "mdi-facebook-workplace",
+          children: <WorkplaceList />,
+          code: "workplace",
+        },
       ];
     }
     //@@viewOff:private
@@ -74,14 +83,16 @@ let Admin = createVisualComponent({
         <RouteBar />
         <LocationProvider>
           <CategoryProvider>
-            <Tabs
-              itemList={getItemList()}
-              activeCode={activeCode}
-              onChange={({ activeCode }) => {
-                setActiveCode(activeCode);
-                setRoute("admin", { activeCode });
-              }}
-            />
+            <WorkplaceProvider>
+              <Tabs
+                itemList={getItemList()}
+                activeCode={activeCode}
+                onChange={({ activeCode }) => {
+                  setActiveCode(activeCode);
+                  setRoute("admin", { activeCode });
+                }}
+              />
+            </WorkplaceProvider>
           </CategoryProvider>
         </LocationProvider>
       </div>

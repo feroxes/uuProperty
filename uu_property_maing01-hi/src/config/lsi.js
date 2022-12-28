@@ -53,6 +53,8 @@ const Lsi = {
   },
 
   locations: { en: "Locations" },
+  location: { en: "Location" },
+  workplace: { en: "Workplace" },
   category: { en: "Category" },
   name: { en: "Name" },
   address: { en: "Address" },
@@ -61,6 +63,8 @@ const Lsi = {
   updateLocation: { en: "Update location" },
   createCategory: { en: "Create category" },
   updateCategory: { en: "Create category" },
+  createWorkplace: { en: "Create workplace" },
+  updateWorkplace: { en: "Create workplace" },
   successfullyUpdated: { en: "Successfully updated" },
   successfullyCreated: { en: "Successfully created" },
   update: { en: "Update" },

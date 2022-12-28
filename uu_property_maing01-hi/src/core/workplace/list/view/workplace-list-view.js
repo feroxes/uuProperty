@@ -3,7 +3,7 @@ import { createVisualComponent, PropTypes, Lsi, useState } from "uu5g05";
 import { Button, Dropdown, Modal } from "uu5g05-elements";
 import Uu5Tiles from "uu5tilesg02";
 import Config from "../../config/config.js";
-import LocationFrom from "../../location-form.js";
+import LocationFrom from "../../workplace-form.js";
 import LsiData from "../../../../config/lsi.js";
 //@@viewOff:imports
 
@@ -15,21 +15,21 @@ const CLASS_NAMES = {
     left: 16px;
   `,
 };
-export const LocationListView = createVisualComponent({
+export const WorkplaceListView = createVisualComponent({
   //@@viewOn:statics
-  uu5Tag: Config.TAG + "LocationListView",
+  uu5Tag: Config.TAG + "WorkplaceListView",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
   propTypes: {
-    locationDataList: PropTypes.object,
+    workplaceDataList: PropTypes.object,
     handlerMap: PropTypes.object,
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
-    locationDataList: {},
+    workplaceDataList: {},
     handlerMap: {},
   },
   //@@viewOff:defaultProps
@@ -45,8 +45,12 @@ export const LocationListView = createVisualComponent({
       return [
         { cell: (cellProps) => cellProps.data.data.name, header: <Lsi lsi={LsiData.name} /> },
         {
-          cell: (cellProps) => cellProps.data.data.address || "",
-          header: <Lsi lsi={LsiData.address} />,
+          cell: (cellProps) => cellProps.data.data.description || "",
+          header: <Lsi lsi={LsiData.description} />,
+        },
+        {
+          cell: (cellProps) => cellProps.data.data.location?.name || "",
+          header: <Lsi lsi={LsiData.location} />,
         },
         {
           cell: () => null,
@@ -73,8 +77,8 @@ export const LocationListView = createVisualComponent({
                     children: <Lsi lsi={LsiData.update} />,
                     icon: "mdi-update",
                     onClick: () => {
-                      setModalHeader(<Lsi lsi={LsiData.updateLocation} />);
-                      setModalProps({ handlerMap: cellProps.data.handlerMap, location: cellProps.data.data });
+                      setModalHeader(<Lsi lsi={LsiData.updateWorkplace} />);
+                      setModalProps({ handlerMap: cellProps.data.handlerMap, workplace: cellProps.data.data });
                       setOpen(true);
                     },
                   },
@@ -90,7 +94,7 @@ export const LocationListView = createVisualComponent({
     }
 
     function onControlsBtnClick() {
-      setModalHeader(<Lsi lsi={LsiData.createLocation} />);
+      setModalHeader(<Lsi lsi={LsiData.createWorkplace} />);
       setModalProps({ handlerMap: props.handlerMap });
       setOpen(true);
     }
@@ -104,7 +108,7 @@ export const LocationListView = createVisualComponent({
 
     //@@viewOn:render
     return (
-      <Uu5Tiles.ControllerProvider data={props.locationDataList.data}>
+      <Uu5Tiles.ControllerProvider data={props.workplaceDataList.data}>
         <Uu5Tiles.InfoBar sortable={false} />
         <Uu5Tiles.List alternateRowBackground rowPadding="8px 16px" columns={getColumns()} />
         {open && (
@@ -120,4 +124,4 @@ export const LocationListView = createVisualComponent({
 
 //@@viewOn: helpers
 //@@viewOff: helpers
-export default LocationListView;
+export default WorkplaceListView;

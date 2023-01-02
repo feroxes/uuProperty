@@ -1,20 +1,20 @@
 /* eslint-disable */
-const states = ["ON_STORAGE", "IN_USE", "ON_REPAIR", "SOLD", "IN_TEMPORARY_USE"];
+const states = ["IN_STORAGE", "IN_USE", "ON_REPAIR", "SOLD", "IN_TEMPORARY_USE"];
 
 const inventoryItemCreateDtoInType = shape({
   name: string(512).isRequired(),
-  state: oneOf(states),
+  state: oneOf(states).isRequired(),
   locationId: id().isRequired(),
   workplaceId: id().isRequired(),
   categoryId: id().isRequired(),
-  description: string(5000),
-  notes: string(5000),
   userUuIdentity: uuIdentity(),
-  imageUrl: uri(),
   inventoryNumber: string().isRequired(),
   invoiceNumber: string(),
   price: number(0, 500000),
   currency: string(/^[A-Z]{3}$/),
+  imageUrl: uri(),
+  description: string(5000),
+  notes: string(5000),
 });
 
 const inventoryItemUpdateDtoInType = shape({

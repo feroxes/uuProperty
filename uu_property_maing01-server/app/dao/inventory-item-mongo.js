@@ -45,8 +45,19 @@ class InventoryItemMongo extends MainMongo {
         },
       },
       { $unwind: "$workplace" },
-      { $addFields: { id: "$_id", "workplace.id": "workplace._id" } },
+      { $addFields: { id: "$_id", "workplace.id": "$workplace._id" } },
       { $project: { _id: 0, "workplace.sys": 0, "workplace._id": 0 } },
+      {
+        $lookup: {
+          from: "category",
+          localField: "categoryId",
+          foreignField: "_id",
+          as: "category",
+        },
+      },
+      { $unwind: "$category" },
+      { $addFields: { id: "$_id", "category.id": "$category._id" } },
+      { $project: { _id: 0, "category.sys": 0, "category._id": 0 } },
       {
         $facet: {
           itemList: [{ $skip: pageIndex * pageSize }, { $limit: pageSize }],

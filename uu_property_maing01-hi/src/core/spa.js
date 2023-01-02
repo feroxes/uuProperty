@@ -5,19 +5,19 @@ import Plus4U5 from "uu_plus4u5g02";
 import Plus4U5App from "uu_plus4u5g02-app";
 
 import Config from "./config/config.js";
-import Home from "../routes/home.js";
 //@@viewOff:imports
 
 //@@viewOn:constants
 const About = Utils.Component.lazy(() => import("../routes/about.js"));
 const Admin = Utils.Component.lazy(() => import("../routes/admin.js"));
+const Inventory = Utils.Component.lazy(() => import("../routes/inventory.js"));
 
 const ROUTE_MAP = {
-  home: (props) => <Home {...props} />,
+  inventory: (props) => <Inventory {...props} />,
   about: (props) => <About {...props} />,
   admin: (props) => <Admin {...props} />,
-  "": { redirect: Config.ROUTES.HOME },
-  "*": { redirect: Config.ROUTES.HOME },
+  "": { redirect: Config.ROUTES.INVENTORY },
+  "*": { redirect: Config.ROUTES.INVENTORY },
 };
 //@@viewOff:constants
 

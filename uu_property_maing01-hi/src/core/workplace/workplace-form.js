@@ -75,14 +75,12 @@ export const WorkplaceFrom = createVisualComponent({
     }
 
     function getLocationItemList() {
-      const a = locationDataList.map((location) => {
+      return locationDataList.map((location) => {
         return {
           value: location.data.id,
           children: location.data.name,
         };
       });
-      console.log("----->a<-----", a);
-      return a;
     }
     //@@viewOff:private
 

@@ -90,6 +90,25 @@ const Calls = {
       return Calls.call("post", commandUri, dtoIn);
     },
   },
+
+  INVENTORY: {
+    load(dtoIn) {
+      let commandUri = Calls.getCommandUri("inventoryItem/list");
+      return Calls.call("get", commandUri, dtoIn);
+    },
+    create(dtoIn) {
+      let commandUri = Calls.getCommandUri("inventoryItem/create");
+      return Calls.call("post", commandUri, dtoIn);
+    },
+    update(dtoIn) {
+      let commandUri = Calls.getCommandUri("inventoryItem/update");
+      return Calls.call("post", commandUri, dtoIn);
+    },
+    delete(dtoIn) {
+      let commandUri = Calls.getCommandUri("inventoryItem/delete");
+      return Calls.call("post", commandUri, dtoIn);
+    },
+  },
 };
 
 export default Calls;

@@ -1,7 +1,9 @@
 //@@viewOn:imports
-import { createVisualComponent, PropTypes, Lsi, useState } from "uu5g05";
-import { Button, Dropdown, Modal } from "uu5g05-elements";
+import { createVisualComponent, PropTypes, Lsi, useState, useMemo } from "uu5g05";
+import { Button, Modal } from "uu5g05-elements";
 import Uu5Tiles from "uu5tilesg02";
+import Uu5TilesElements from "uu5tilesg02-elements";
+import TilesHelper from "../../../../helpers/tiles-helper.js";
 import Config from "../../config/config.js";
 import LocationFrom from "../../workplace-form.js";
 import LsiData from "../../../../config/lsi.js";
@@ -9,12 +11,6 @@ import LsiData from "../../../../config/lsi.js";
 
 //@@viewOn:constants
 //@@viewOff:constants
-const CLASS_NAMES = {
-  createBtn: () => Config.Css.css`
-    position: relative;
-    left: 16px;
-  `,
-};
 export const WorkplaceListView = createVisualComponent({
   //@@viewOn:statics
   uu5Tag: Config.TAG + "WorkplaceListView",
@@ -38,61 +34,13 @@ export const WorkplaceListView = createVisualComponent({
     const [open, setOpen] = useState(false);
     const [modalProps, setModalProps] = useState(null);
     const [modalHeader, setModalHeader] = useState(null);
+    const SERIE_LIST = useMemo(
+      () => TilesHelper.WORKPLACE.getSerieList({ setModalHeader, setModalProps, setOpen }),
+      []
+    );
     //@@viewOff:hooks
 
     //@@viewOn:private
-    function getColumns() {
-      return [
-        { cell: (cellProps) => cellProps.data.data.name, header: <Lsi lsi={LsiData.name} /> },
-        {
-          cell: (cellProps) => cellProps.data.data.description || "",
-          header: <Lsi lsi={LsiData.description} />,
-        },
-        {
-          cell: (cellProps) => cellProps.data.data.location?.name || "",
-          header: <Lsi lsi={LsiData.location} />,
-        },
-        {
-          cell: () => null,
-          header: (
-            <Button
-              colorScheme="primary"
-              icon="mdi-plus-circle"
-              onClick={onControlsBtnClick}
-              className={CLASS_NAMES.createBtn()}
-            />
-          ),
-          width: 1,
-          fixed: "right",
-          isControls: true,
-        },
-        {
-          key: "actions",
-          cell: (cellProps) => {
-            return (
-              <Dropdown
-                significance="subdued"
-                itemList={[
-                  {
-                    children: <Lsi lsi={LsiData.update} />,
-                    icon: "mdi-update",
-                    onClick: () => {
-                      setModalHeader(<Lsi lsi={LsiData.updateWorkplace} />);
-                      setModalProps({ handlerMap: cellProps.data.handlerMap, workplace: cellProps.data.data });
-                      setOpen(true);
-                    },
-                  },
-                ]}
-              />
-            );
-          },
-          fixed: "right",
-          width: 52,
-          cellPadding: "0 16px",
-        },
-      ];
-    }
-
     function onControlsBtnClick() {
       setModalHeader(<Lsi lsi={LsiData.createWorkplace} />);
       setModalProps({ handlerMap: props.handlerMap });
@@ -108,9 +56,22 @@ export const WorkplaceListView = createVisualComponent({
 
     //@@viewOn:render
     return (
-      <Uu5Tiles.ControllerProvider data={props.workplaceDataList.data}>
-        <Uu5Tiles.InfoBar sortable={false} />
-        <Uu5Tiles.List alternateRowBackground rowPadding="8px 16px" columns={getColumns()} />
+      <Uu5Tiles.ControllerProvider data={props.workplaceDataList.data} serieList={SERIE_LIST}>
+        <div className={Config.Css.css({ display: "grid", gap: 8, gridAutoFlow: "row" })}>
+          <div
+            className={Config.Css.css({
+              minWidth: 0,
+              display: "flex",
+              justifyContent: "flex-end",
+              margin: "8px 8px 0 8px",
+            })}
+          >
+            <Button colorScheme="primary" icon="mdi-plus-circle" onClick={onControlsBtnClick} />
+          </div>
+          <div className={Config.Css.css({ minWidth: 0 })}>
+            <Uu5TilesElements.Table />
+          </div>
+        </div>
         {open && (
           <Modal open header={modalHeader} onClose={() => setOpen(false)} closeOnOverlayClick>
             <LocationFrom onClose={() => setOpen(false)} {...modalProps} />

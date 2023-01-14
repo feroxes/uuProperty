@@ -145,6 +145,131 @@ const TilesHelper = {
       ];
     },
   },
+  LOCATION: {
+    getSerieList: (modalProps) => {
+      const { setModalHeader, setModalProps, setOpen } = modalProps;
+      return [
+        {
+          value: "name",
+          label: LsiData.name,
+          dataItem: (props) => props.data.data.name,
+        },
+        {
+          value: "address",
+          label: LsiData.address,
+          dataItem: (props) => props.data.data.address,
+        },
+        {
+          value: "dropdown",
+          label: "",
+          fixed: "end",
+          dataItem: (props) => {
+            return (
+              <Dropdown
+                significance="subdued"
+                itemList={[
+                  {
+                    children: <Lsi lsi={LsiData.update} />,
+                    icon: "mdi-update",
+                    onClick: () => {
+                      setModalHeader(<Lsi lsi={LsiData.updateLocation} />);
+                      setModalProps({ handlerMap: props.data.handlerMap, location: props.data.data });
+                      setOpen(true);
+                    },
+                  },
+                ]}
+              />
+            );
+          },
+        },
+      ];
+    },
+  },
+  CATEGORY: {
+    getSerieList: (modalProps) => {
+      const { setModalHeader, setModalProps, setOpen } = modalProps;
+      return [
+        {
+          value: "name",
+          label: LsiData.name,
+          dataItem: (props) => props.data.data.name,
+        },
+        {
+          value: "description",
+          label: LsiData.description,
+          dataItem: (props) => props.data.data.description,
+        },
+        {
+          value: "dropdown",
+          label: "",
+          fixed: "end",
+          dataItem: (props) => {
+            return (
+              <Dropdown
+                significance="subdued"
+                itemList={[
+                  {
+                    children: <Lsi lsi={LsiData.update} />,
+                    icon: "mdi-update",
+                    onClick: () => {
+                      setModalHeader(<Lsi lsi={LsiData.updateCategory} />);
+                      setModalProps({ handlerMap: props.data.handlerMap, category: props.data.data });
+                      setOpen(true);
+                    },
+                  },
+                ]}
+              />
+            );
+          },
+        },
+      ];
+    },
+  },
+  WORKPLACE: {
+    getSerieList: (modalProps) => {
+      const { setModalHeader, setModalProps, setOpen } = modalProps;
+      return [
+        {
+          value: "name",
+          label: LsiData.name,
+          dataItem: (props) => props.data.data.name,
+        },
+        {
+          value: "description",
+          label: LsiData.description,
+          dataItem: (props) => props.data.data.description,
+        },
+        {
+          value: "locationId",
+          label: LsiData.location,
+          dataItem: (props) => props.data.data.location.name,
+        },
+        {
+          value: "dropdown",
+          label: "",
+          fixed: "end",
+          dataItem: (props) => {
+            return (
+              <Dropdown
+                significance="subdued"
+                itemList={[
+                  {
+                    children: <Lsi lsi={LsiData.update} />,
+                    icon: "mdi-update",
+                    onClick: () => {
+                      setModalHeader(<Lsi lsi={LsiData.updateWorkplace} />);
+                      setModalProps({ handlerMap: props.data.handlerMap, workplace: props.data.data });
+                      setOpen(true);
+                    },
+                  },
+                ]}
+              />
+            );
+          },
+        },
+      ];
+    },
+  },
 };
 
 export default TilesHelper;

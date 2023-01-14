@@ -68,20 +68,22 @@ const TilesHelper = {
           fixed: "end",
           dataItem: (props) => {
             return (
-              <Dropdown
-                significance="subdued"
-                itemList={[
-                  {
-                    children: <Lsi lsi={LsiData.update} />,
-                    icon: "mdi-update",
-                    onClick: () => {
-                      setModalHeader(<Lsi lsi={LsiData.inventoryItemUpdate} />);
-                      setModalProps({ handlerMap: props.data.handlerMap, inventoryItem: props.data.data });
-                      setOpen(true);
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <Dropdown
+                  significance="subdued"
+                  itemList={[
+                    {
+                      children: <Lsi lsi={LsiData.update} />,
+                      icon: "mdi-update",
+                      onClick: () => {
+                        setModalHeader(<Lsi lsi={LsiData.inventoryItemUpdate} />);
+                        setModalProps({ handlerMap: props.data.handlerMap, inventoryItem: props.data.data });
+                        setOpen(true);
+                      },
                     },
-                  },
-                ]}
-              />
+                  ]}
+                />
+              </div>
             );
           },
         },
@@ -165,20 +167,22 @@ const TilesHelper = {
           fixed: "end",
           dataItem: (props) => {
             return (
-              <Dropdown
-                significance="subdued"
-                itemList={[
-                  {
-                    children: <Lsi lsi={LsiData.update} />,
-                    icon: "mdi-update",
-                    onClick: () => {
-                      setModalHeader(<Lsi lsi={LsiData.updateLocation} />);
-                      setModalProps({ handlerMap: props.data.handlerMap, location: props.data.data });
-                      setOpen(true);
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <Dropdown
+                  significance="subdued"
+                  itemList={[
+                    {
+                      children: <Lsi lsi={LsiData.update} />,
+                      icon: "mdi-update",
+                      onClick: () => {
+                        setModalHeader(<Lsi lsi={LsiData.updateLocation} />);
+                        setModalProps({ handlerMap: props.data.handlerMap, location: props.data.data });
+                        setOpen(true);
+                      },
                     },
-                  },
-                ]}
-              />
+                  ]}
+                />
+              </div>
             );
           },
         },
@@ -205,20 +209,22 @@ const TilesHelper = {
           fixed: "end",
           dataItem: (props) => {
             return (
-              <Dropdown
-                significance="subdued"
-                itemList={[
-                  {
-                    children: <Lsi lsi={LsiData.update} />,
-                    icon: "mdi-update",
-                    onClick: () => {
-                      setModalHeader(<Lsi lsi={LsiData.updateCategory} />);
-                      setModalProps({ handlerMap: props.data.handlerMap, category: props.data.data });
-                      setOpen(true);
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <Dropdown
+                  significance="subdued"
+                  itemList={[
+                    {
+                      children: <Lsi lsi={LsiData.update} />,
+                      icon: "mdi-update",
+                      onClick: () => {
+                        setModalHeader(<Lsi lsi={LsiData.updateCategory} />);
+                        setModalProps({ handlerMap: props.data.handlerMap, category: props.data.data });
+                        setOpen(true);
+                      },
                     },
-                  },
-                ]}
-              />
+                  ]}
+                />
+              </div>
             );
           },
         },
@@ -250,20 +256,22 @@ const TilesHelper = {
           fixed: "end",
           dataItem: (props) => {
             return (
-              <Dropdown
-                significance="subdued"
-                itemList={[
-                  {
-                    children: <Lsi lsi={LsiData.update} />,
-                    icon: "mdi-update",
-                    onClick: () => {
-                      setModalHeader(<Lsi lsi={LsiData.updateWorkplace} />);
-                      setModalProps({ handlerMap: props.data.handlerMap, workplace: props.data.data });
-                      setOpen(true);
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <Dropdown
+                  significance="subdued"
+                  itemList={[
+                    {
+                      children: <Lsi lsi={LsiData.update} />,
+                      icon: "mdi-update",
+                      onClick: () => {
+                        setModalHeader(<Lsi lsi={LsiData.updateWorkplace} />);
+                        setModalProps({ handlerMap: props.data.handlerMap, workplace: props.data.data });
+                        setOpen(true);
+                      },
                     },
-                  },
-                ]}
-              />
+                  ]}
+                />
+              </div>
             );
           },
         },

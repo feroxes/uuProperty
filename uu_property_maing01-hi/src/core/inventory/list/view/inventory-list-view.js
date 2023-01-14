@@ -50,7 +50,7 @@ export const InventoryListView = createVisualComponent({
     useEffect(() => {
       const filterMap = {};
       filterList.forEach((filter) => (filterMap[filter.key] = filter.value));
-      handlerMap.load({ filterMap });
+      handlerMap.load({ filterMap, pageInfo: { pageSize: Constants.INVENTORY_ITEM.defaultPageSize } });
     }, [filterList]);
     //@@viewOff:hooks
 

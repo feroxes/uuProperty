@@ -4,6 +4,7 @@ import { useSubApp } from "uu_plus4u5g02";
 import Config from "./config/config";
 import Calls from "calls";
 import InventoryContext from "./context/inventory-context.js";
+import Constants from "../../config/constants.js";
 //@@viewOff:imports
 
 export const InventoryProvider = createComponent({
@@ -34,6 +35,7 @@ export const InventoryProvider = createComponent({
         },
         delete: handleDelete,
       },
+      pageSize: Constants.INVENTORY_ITEM.defaultPageSize,
     });
 
     function handleLoad(criteria) {

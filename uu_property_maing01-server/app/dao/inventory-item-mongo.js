@@ -16,6 +16,7 @@ class InventoryItemMongo extends MainMongo {
     const { pageIndex, pageSize } = pageInfo;
     filterMap.locationId && (filterMap.locationId = ObjectId(filterMap.locationId));
     filterMap.workplaceId && (filterMap.workplaceId = ObjectId(filterMap.workplaceId));
+    filterMap.categoryId && (filterMap.categoryId = ObjectId(filterMap.categoryId));
     if (filterMap.name) {
       filterMap.name = {
         $regex: filterMap.name,
@@ -25,6 +26,8 @@ class InventoryItemMongo extends MainMongo {
 
     const inventoryItems = await super.aggregate([
       { $match: filterMap },
+      { $addFields: { id: "$_id" } },
+      { $project: { _id: 0 } },
       {
         $lookup: {
           from: "location",
@@ -34,8 +37,9 @@ class InventoryItemMongo extends MainMongo {
         },
       },
       { $unwind: "$location" },
-      { $addFields: { id: "$_id", "location.id": "$location._id" } },
-      { $project: { _id: 0, "location.sys": 0, "location._id": 0 } },
+      { $addFields: { "location.id": "$location._id" } },
+      { $project: { "location.sys": 0, "location._id": 0 } },
+
       {
         $lookup: {
           from: "workplace",
@@ -45,8 +49,8 @@ class InventoryItemMongo extends MainMongo {
         },
       },
       { $unwind: "$workplace" },
-      { $addFields: { id: "$_id", "workplace.id": "$workplace._id" } },
-      { $project: { _id: 0, "workplace.sys": 0, "workplace._id": 0 } },
+      { $addFields: { "workplace.id": "$workplace._id" } },
+      { $project: { "workplace.sys": 0, "workplace._id": 0 } },
       {
         $lookup: {
           from: "category",
@@ -56,8 +60,8 @@ class InventoryItemMongo extends MainMongo {
         },
       },
       { $unwind: "$category" },
-      { $addFields: { id: "$_id", "category.id": "$category._id" } },
-      { $project: { _id: 0, "category.sys": 0, "category._id": 0 } },
+      { $addFields: { "category.id": "$category._id" } },
+      { $project: { "category.sys": 0, "category._id": 0 } },
       {
         $facet: {
           itemList: [{ $skip: pageIndex * pageSize }, { $limit: pageSize }],

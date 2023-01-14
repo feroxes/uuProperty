@@ -48,6 +48,8 @@ class CreateAbl {
       throw new Errors.CategoryDaoDoesNotExist({ uuAppErrorMap }, { categoryId: dtoIn.categoryId });
     }
 
+    dtoIn.categoryId = ObjectId(dtoIn.categoryId);
+
     dtoIn.lifecycle = [
       {
         eventDate: new Date(),

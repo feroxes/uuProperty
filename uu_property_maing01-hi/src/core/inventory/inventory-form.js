@@ -156,7 +156,6 @@ export const InventoryFrom = createVisualComponent({
           <FormText
             name="userUuIdentity"
             label={<Lsi lsi={LsiData.user} />}
-            required
             initialValue={inventoryItem && inventoryItem.userUuIdentity}
           />
         </div>

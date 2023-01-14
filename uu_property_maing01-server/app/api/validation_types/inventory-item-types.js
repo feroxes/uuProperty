@@ -40,6 +40,7 @@ const inventoryItemListDtoInType = shape({
     state: oneOf(states),
     locationId: id(),
     workplaceId: id(),
+    categoryId: id(),
     userUuIdentity: uuIdentity(),
     inventoryNumber: string(),
     invoiceNumber: string(),

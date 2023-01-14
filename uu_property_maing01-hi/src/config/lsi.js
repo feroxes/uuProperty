@@ -31,6 +31,7 @@ const Lsi = {
   name: { en: "Name" },
   state: { en: "State" },
   user: { en: "User" },
+  userUuIdentity: { en: "User uuIdentity" },
   inventoryNumber: { en: "Inventory number" },
   invoiceNumber: { en: "Invoice number" },
   price: { en: "Price" },

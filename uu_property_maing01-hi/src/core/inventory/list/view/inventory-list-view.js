@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import { createVisualComponent, PropTypes, Lsi, useState, useEffect, useMemo } from "uu5g05";
-import { Button, Modal } from "uu5g05-elements";
+import { Button, Modal, Dialog } from "uu5g05-elements";
 import Uu5Tiles from "uu5tilesg02";
 import Uu5TilesControls from "uu5tilesg02-controls";
 import Uu5TilesElements from "uu5tilesg02-elements";
@@ -41,6 +41,8 @@ export const InventoryListView = createVisualComponent({
     const { inventoryDataList, categoryDataList, locationDataList, workplaceDataList, handlerMap } = props;
     //@@viewOn:hooks
     const [open, setOpen] = useState(false);
+    const [dialogOpen, setDialogOpen] = useState(false);
+    const [deleteItem, setDeleteItem] = useState(null);
     const [modalProps, setModalProps] = useState(null);
     const [modalHeader, setModalHeader] = useState(null);
     const [filterList, setFilterList] = useState([]);
@@ -54,7 +56,11 @@ export const InventoryListView = createVisualComponent({
 
     //@@viewOn:private
     const SERIE_LIST = useMemo(
-      () => TilesHelper.INVENTORY_ITEM.getSerieList({ setModalHeader, setModalProps, setOpen }),
+      () =>
+        TilesHelper.INVENTORY_ITEM.getSerieList(
+          { setModalHeader, setModalProps, setOpen },
+          { setDialogOpen, setDeleteItem }
+        ),
       []
     );
     const FILTER_LIST = useMemo(() => TilesHelper.INVENTORY_ITEM.getFilterList(props), []);
@@ -68,9 +74,14 @@ export const InventoryListView = createVisualComponent({
     function onFilterChange(e) {
       setFilterList(e.data.filterList);
     }
+
     //@@viewOff:private
 
     //@@viewOn:handlers
+    function handleOnDialogClose() {
+      setDialogOpen(false);
+      setDeleteItem(null);
+    }
     //@@viewOff:handlers
 
     // @@viewOn:interface
@@ -118,6 +129,22 @@ export const InventoryListView = createVisualComponent({
               {...modalProps}
             />
           </Modal>
+        )}
+        {dialogOpen && (
+          <Dialog
+            open
+            header={<Lsi lsi={LsiData.inventoryItemDelete} />}
+            onClose={handleOnDialogClose}
+            actionDirection="horizontal"
+            actionList={[
+              {
+                children: <Lsi lsi={LsiData.delete} />,
+                colorScheme: "negative",
+                onClick: () => deleteItem.handlerMap.delete({ id: deleteItem.data.id }),
+              },
+              { children: <Lsi lsi={LsiData.cancel} />, onClick: handleOnDialogClose },
+            ]}
+          />
         )}
       </Uu5Tiles.ControllerProvider>
     );

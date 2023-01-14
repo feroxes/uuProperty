@@ -6,8 +6,9 @@ import Constants from "../config/constants.js";
 
 const TilesHelper = {
   INVENTORY_ITEM: {
-    getSerieList: (modalProps) => {
+    getSerieList: (modalProps, dialogProps) => {
       const { setModalHeader, setModalProps, setOpen } = modalProps;
+      const { setDialogOpen, setDeleteItem } = dialogProps;
       return [
         {
           value: "name",
@@ -79,6 +80,14 @@ const TilesHelper = {
                         setModalHeader(<Lsi lsi={LsiData.inventoryItemUpdate} />);
                         setModalProps({ handlerMap: props.data.handlerMap, inventoryItem: props.data.data });
                         setOpen(true);
+                      },
+                    },
+                    {
+                      children: <Lsi lsi={LsiData.delete} />,
+                      icon: "mdi-delete",
+                      onClick: () => {
+                        setDialogOpen(true);
+                        setDeleteItem(props.data);
                       },
                     },
                   ]}

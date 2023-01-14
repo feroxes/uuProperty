@@ -52,6 +52,8 @@ const Lsi = {
   successfullyUpdated: { en: "Successfully updated" },
   successfullyCreated: { en: "Successfully created" },
   update: { en: "Update" },
+  delete: { en: "Delete" },
+  cancel: { en: "Cancel" },
   create: { en: "Create" },
   IN_STORAGE: { en: "In storage" },
   IN_USE: { en: "In use" },

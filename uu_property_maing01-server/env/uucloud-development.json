@@ -9,7 +9,7 @@
     "license": "License Commercial",
     "asidRequired": true,
     "awidCount": 1,
-    "resourcePoolUri": "----- VALUE REQUIRED -----",
+    "resourcePoolUri": "ues:DEV0188-BT:SWFC1_ONBOARDING_AWE",
     "uuAppNodeSetMap": {
       "CMD": {
         "nodeSize": "G1_S",
@@ -17,19 +17,37 @@
           "min": 1,
           "max": 1
         },
-        "appPackUri": null,
-        "runtimeStack": "UU.APPG01/APPSERVER_NODEJS_STACK-1.6"
+        "appPackUri": "ues:DEV0188-BT:UU.PROPERTY.MAING01/APPBOX-0.1.0:UU.PROPERTY.MAING01/CMD-PACK",
+        "runtimeStack": "UU.APPG01/APPSERVER_NODEJS_STACK-2.0"
       }
     },
     "uuAppObjectStoreMap": {
       "OSID_1": {
-        "technology": "MongoDB-4.0",
+        "technology": "MongoDB-5.0",
         "size": 0.25,
         "backup": false,
         "alias": "primary"
       }
     },
     "uuConfigMap": {
+      "log_level": "DEBUG",
+      "asid_license_owner_list": [
+        "3078-1723-1"
+      ]
+    }
+  },
+  "uuSubAppInstance": {
+    "asid": "a6b8b916d312a32289c1dc613f74df1f",
+    "asidOwner": "3078-1723-1",
+    "awidList": [
+      {
+        "awid": "8a717d8b849bd51eafa1b54db1bdab70"
+      }
+    ],
+    "uuAppObjectStoreMap": {
+      "OSID_1": {
+        "osid": "3016b6751ff94bf088b67e7abfd870ba"
+      }
     }
   }
 }

@@ -8,8 +8,8 @@
   },
   "devkit": {
     "development": {
-      "appBoxLocationUri": "----- VALUE REQUIRED -----",
-      "appDeploymentUri": null
+      "appBoxLocationUri": "ues:DEV0188-BT:SWF.C1/APPBOXES/PROPERTY",
+      "appDeploymentUri": ""
     }
   },
   "uu_property_maing01-hi": {},

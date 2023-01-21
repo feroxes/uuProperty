@@ -153,6 +153,18 @@ const TilesHelper = {
           key: "invoiceNumber",
           label: LsiData.invoiceNumber,
         },
+        {
+          key: "search",
+          label: LsiData.search,
+          filter: (item, search) => {
+            const inventoryItem = item.data;
+            if (inventoryItem.name.toLowerCase().includes(search.toLowerCase())) return true;
+            else if (inventoryItem.description?.toLowerCase().includes(search.toLowerCase())) return true;
+            else if (inventoryItem.inventoryNumber?.toLowerCase().includes(search.toLowerCase())) return true;
+            else if (inventoryItem.invoiceNumber?.toLowerCase().includes(search.toLowerCase())) return true;
+            else return false;
+          },
+        },
       ];
     },
   },

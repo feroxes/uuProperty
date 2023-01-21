@@ -36,7 +36,6 @@ const inventoryItemUpdateDtoInType = shape({
 
 const inventoryItemListDtoInType = shape({
   filterMap: shape({
-    name: string(512),
     state: oneOf(states),
     locationId: id(),
     workplaceId: id(),
@@ -44,6 +43,7 @@ const inventoryItemListDtoInType = shape({
     userUuIdentity: uuIdentity(),
     inventoryNumber: string(),
     invoiceNumber: string(),
+    search: string(),
   }),
   pageInfo: shape({
     pageIndex: integer(),

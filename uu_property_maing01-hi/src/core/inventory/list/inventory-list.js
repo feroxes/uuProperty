@@ -39,10 +39,10 @@ export const InventoryList = createVisualComponent({
 
     //@@viewOn:render
     return (
-      <DataListStateResolver dataList={inventoryDataList}>
-        <DataListStateResolver dataList={categoryDataList}>
-          <DataListStateResolver dataList={locationDataList}>
-            <DataListStateResolver dataList={workplaceDataList}>
+      <DataListStateResolver dataList={categoryDataList}>
+        <DataListStateResolver dataList={locationDataList}>
+          <DataListStateResolver dataList={workplaceDataList}>
+            <DataListStateResolver dataList={inventoryDataList}>
               <InventoryListView
                 inventoryDataList={inventoryDataList}
                 handlerMap={inventoryDataList.handlerMap}

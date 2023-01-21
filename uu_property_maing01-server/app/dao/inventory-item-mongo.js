@@ -3,13 +3,30 @@ const MainMongo = require("./main-mongo.js");
 const { ObjectId } = require("mongodb");
 class InventoryItemMongo extends MainMongo {
   async createSchema() {
-    await super.createIndex({ awid: 1, name: 1 });
     await super.createIndex({ awid: 1, inventoryNumber: 1 }, { unique: true });
     await super.createIndex({ awid: 1, locationId: 1 });
     await super.createIndex({ awid: 1, workplaceId: 1 });
     await super.createIndex({ awid: 1, userUuIdentity: 1 });
-    await super.createIndex({ awid: 1, invoiceNumber: 1 });
     await super.createIndex({ awid: 1, state: 1 });
+    await super.createIndex(
+      {
+        awid: 1,
+        name: "text",
+        description: "text",
+        userUuIdentity: "text",
+        inventoryNumber: "text",
+        invoiceNumber: "text",
+      },
+      {
+        weights: {
+          name: 20,
+          description: 10,
+          userUuIdentity: 8,
+          inventoryNumber: 5,
+          invoiceNumber: 5,
+        },
+      }
+    );
   }
 
   async listByCriteria(filterMap, pageInfo) {
@@ -17,11 +34,9 @@ class InventoryItemMongo extends MainMongo {
     filterMap.locationId && (filterMap.locationId = ObjectId(filterMap.locationId));
     filterMap.workplaceId && (filterMap.workplaceId = ObjectId(filterMap.workplaceId));
     filterMap.categoryId && (filterMap.categoryId = ObjectId(filterMap.categoryId));
-    if (filterMap.name) {
-      filterMap.name = {
-        $regex: filterMap.name,
-        $options: "i",
-      };
+    if (filterMap.search) {
+      filterMap["$text"] = { $search: filterMap.search };
+      delete filterMap.search;
     }
 
     const inventoryItems = await super.aggregate([

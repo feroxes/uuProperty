@@ -34,6 +34,7 @@ const Lsi = {
   userUuIdentity: { en: "User uuIdentity" },
   inventoryNumber: { en: "Inventory number" },
   invoiceNumber: { en: "Invoice number" },
+  search: { en: "Search" },
   price: { en: "Price" },
   currency: { en: "Currency" },
   imageUrl: { en: "Image URL" },

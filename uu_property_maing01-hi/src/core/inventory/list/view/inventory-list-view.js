@@ -6,6 +6,7 @@ import Uu5TilesControls from "uu5tilesg02-controls";
 import Uu5TilesElements from "uu5tilesg02-elements";
 import Config from "../../config/config.js";
 import InventoryFrom from "../../inventory-form.js";
+import InventoryDetails from "../inventory-details.js";
 import Constants from "../../../../config/constants.js";
 import TilesHelper from "../../../../helpers/tiles-helper.js";
 import LsiData from "../../../../config/lsi.js";
@@ -41,6 +42,8 @@ export const InventoryListView = createVisualComponent({
     const { inventoryDataList, categoryDataList, locationDataList, workplaceDataList, handlerMap } = props;
     //@@viewOn:hooks
     const [open, setOpen] = useState(false);
+    const [openDetailsModal, setOpenDetailsModal] = useState(false);
+    const [inventoryDetailsProps, setInventoryDetailsProps] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
     const [deleteItem, setDeleteItem] = useState(null);
     const [modalProps, setModalProps] = useState(null);
@@ -58,7 +61,7 @@ export const InventoryListView = createVisualComponent({
     const SERIE_LIST = useMemo(
       () =>
         TilesHelper.INVENTORY_ITEM.getSerieList(
-          { setModalHeader, setModalProps, setOpen },
+          { setModalHeader, setModalProps, setOpen, setOpenDetailsModal, setInventoryDetailsProps },
           { setDialogOpen, setDeleteItem }
         ),
       []
@@ -128,6 +131,17 @@ export const InventoryListView = createVisualComponent({
               workplaceDataList={workplaceDataList.data}
               {...modalProps}
             />
+          </Modal>
+        )}
+        {openDetailsModal && (
+          <Modal
+            open
+            header={<Lsi lsi={LsiData.details} />}
+            onClose={() => setOpenDetailsModal(false)}
+            closeOnOverlayClick
+            width={1000}
+          >
+            <InventoryDetails onClose={() => setOpenDetailsModal(false)} {...inventoryDetailsProps} />
           </Modal>
         )}
         {dialogOpen && (

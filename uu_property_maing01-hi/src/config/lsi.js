@@ -56,11 +56,13 @@ const Lsi = {
   delete: { en: "Delete" },
   cancel: { en: "Cancel" },
   create: { en: "Create" },
+  details: { en: "Details" },
   IN_STORAGE: { en: "In storage" },
   IN_USE: { en: "In use" },
   ON_REPAIR: { en: "On repair" },
   SOLD: { en: "Sold" },
   IN_TEMPORARY_USE: { en: "In temporary use" },
+  lifecycle: { en: "Lifecycle" },
 };
 
 export default Lsi;

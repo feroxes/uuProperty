@@ -7,7 +7,7 @@ import Constants from "../config/constants.js";
 const TilesHelper = {
   INVENTORY_ITEM: {
     getSerieList: (modalProps, dialogProps) => {
-      const { setModalHeader, setModalProps, setOpen } = modalProps;
+      const { setModalHeader, setModalProps, setOpen, setOpenDetailsModal, setInventoryDetailsProps } = modalProps;
       const { setDialogOpen, setDeleteItem } = dialogProps;
       return [
         {
@@ -73,6 +73,14 @@ const TilesHelper = {
                 <Dropdown
                   significance="subdued"
                   itemList={[
+                    {
+                      children: <Lsi lsi={LsiData.details} />,
+                      icon: "mdi-information-outline",
+                      onClick: () => {
+                        setInventoryDetailsProps({ inventoryItem: props.data.data });
+                        setOpenDetailsModal(true);
+                      },
+                    },
                     {
                       children: <Lsi lsi={LsiData.update} />,
                       icon: "mdi-update",

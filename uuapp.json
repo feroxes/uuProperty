@@ -1,6 +1,6 @@
 {
   "product": "uu_property_maing01",
-  "version": "0.1.0",
+  "version": "0.1.0-beta.1",
   "license": "License Commercial",
   "description": {
     "en": "",
@@ -9,7 +9,7 @@
   "devkit": {
     "development": {
       "appBoxLocationUri": "ues:DEV0188-BT:SWF.C1/APPBOXES/PROPERTY",
-      "appDeploymentUri": ""
+      "appDeploymentUri": "ues:DEV0188-BT[84723967990185145]:SWFC1_ONBOARDING_AWE[619b534a2ed8c53e521b6cfc]:UU.PROPERTY.MAING01[63cbd713df351b960809684b]"
     }
   },
   "uu_property_maing01-hi": {},

@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { Form, FormText, FormSelect, FormTextArea, SubmitButton, CancelButton } from "uu5g05-forms";
+import { Form, FormText, FormSelect, FormTextArea, SubmitButton, CancelButton, FormDate } from "uu5g05-forms";
 import { createVisualComponent, PropTypes, Lsi } from "uu5g05";
 import { useAlertBus } from "uu5g05-elements";
 import Config from "./config/config.js";
@@ -182,6 +182,13 @@ export const InventoryFrom = createVisualComponent({
             name="currency"
             label={<Lsi lsi={LsiData.currency} />}
             initialValue={inventoryItem && inventoryItem.currency}
+          />
+        </div>
+        <div className={CLASS_NAMES.grid()}>
+          <FormDate
+            name="initDate"
+            label={<Lsi lsi={LsiData.initDate} />}
+            initialValue={inventoryItem && inventoryItem.initDate}
           />
         </div>
         <FormText

@@ -15,6 +15,7 @@ const inventoryItemCreateDtoInType = shape({
   imageUrl: uri(),
   description: string(5000),
   notes: string(5000),
+  initDate: date(),
 });
 
 const inventoryItemUpdateDtoInType = shape({
@@ -32,6 +33,7 @@ const inventoryItemUpdateDtoInType = shape({
   invoiceNumber: string(),
   price: number(0, 500000),
   currency: string(/^[A-Z]{3}$/),
+  initDate: date(),
 });
 
 const inventoryItemListDtoInType = shape({

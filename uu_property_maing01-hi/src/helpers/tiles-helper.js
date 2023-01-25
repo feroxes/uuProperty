@@ -1,5 +1,5 @@
 import { PersonItem } from "uu_plus4u5g02-elements";
-import { Dropdown } from "uu5g05-elements";
+import { Dropdown, DateTime } from "uu5g05-elements";
 import { Lsi } from "uu5g05";
 import LsiData from "../config/lsi.js";
 import Constants from "../config/constants.js";
@@ -11,29 +11,14 @@ const TilesHelper = {
       const { setDialogOpen, setDeleteItem } = dialogProps;
       return [
         {
-          value: "name",
-          label: LsiData.name,
-          dataItem: (props) => props.data.data.name,
-        },
-        {
-          value: "state",
-          label: LsiData.state,
-          dataItem: (props) => props.data.data.state,
-        },
-        {
-          value: "categoryId",
-          label: LsiData.category,
-          dataItem: (props) => props.data.data.category.name,
-        },
-        {
           value: "locationId",
           label: LsiData.location,
           dataItem: (props) => props.data.data.location.name,
         },
         {
-          value: "workplaceId",
-          label: LsiData.workplace,
-          dataItem: (props) => props.data.data.workplace.name,
+          value: "inventoryNumber",
+          label: LsiData.inventoryNumber,
+          dataItem: (props) => props.data.data.inventoryNumber,
         },
         {
           value: "userUuIdentity",
@@ -44,14 +29,19 @@ const TilesHelper = {
           },
         },
         {
-          value: "inventoryNumber",
-          label: LsiData.inventoryNumber,
-          dataItem: (props) => props.data.data.inventoryNumber,
+          value: "name",
+          label: LsiData.name,
+          dataItem: (props) => props.data.data.name,
         },
         {
-          value: "invoiceNumber",
-          label: LsiData.invoiceNumber,
-          dataItem: (props) => props.data.data.invoiceNumber,
+          value: "initDate",
+          label: LsiData.initDate,
+          dataItem: (props) => {
+            const { initDate } = props.data.data;
+            if (initDate) {
+              return <DateTime value={initDate} format="DD.MM.YYYY" timeFormat="none" />;
+            } else return null;
+          },
         },
         {
           value: "price",
@@ -62,6 +52,21 @@ const TilesHelper = {
               return `${price} ${currency}`;
             } else return null;
           },
+        },
+        {
+          value: "state",
+          label: LsiData.state,
+          dataItem: (props) => props.data.data.state,
+        },
+        {
+          value: "workplaceId",
+          label: LsiData.workplace,
+          dataItem: (props) => props.data.data.workplace.name,
+        },
+        {
+          value: "categoryId",
+          label: LsiData.category,
+          dataItem: (props) => props.data.data.category.name,
         },
         {
           value: "dropdown",

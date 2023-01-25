@@ -37,6 +37,7 @@ const Lsi = {
   search: { en: "Search" },
   price: { en: "Price" },
   currency: { en: "Currency" },
+  initDate: { en: "Initial date" },
   imageUrl: { en: "Image URL" },
   notes: { en: "Notes" },
   address: { en: "Address" },

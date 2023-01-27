@@ -64,13 +64,6 @@ class UpdateAbl {
       throw new Errors.CategoryDoesNotExist({ uuAppErrorMap }, { id: categoryId });
     }
 
-    const locationIdForCheck = locationForUpdate?.id || location.id;
-    const workplaceForCheck = workplaceForUpdate || workplace;
-
-    if (workplaceForCheck.locationId.toString() !== locationIdForCheck.toString()) {
-      throw new Errors.LocationDoesNotBelongToWorkplace({ uuAppErrorMap });
-    }
-
     const updateDtoIn = {
       ...inventoryItem,
       ...dtoIn,

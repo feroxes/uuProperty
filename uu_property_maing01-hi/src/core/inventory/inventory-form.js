@@ -48,10 +48,18 @@ export const InventoryFrom = createVisualComponent({
     //@@viewOff:hooks
 
     //@@viewOn:private
+    function prepareDtoIn(dtoIn) {
+      const dtoInKeys = Object.keys(dtoIn);
+      dtoInKeys.forEach((key) => {
+        if (!dtoIn[key]) dtoIn[key] = null;
+      });
+      return dtoIn;
+    }
+
     function handleOnSubmitClick({ data }) {
       if (inventoryItem) {
         handlerMap
-          .update({ ...data.value, id: inventoryItem.id })
+          .update({ ...prepareDtoIn(data.value), id: inventoryItem.id })
           .then(() => {
             addAlert({
               message: <Lsi lsi={LsiData.successfullyUpdated} />,

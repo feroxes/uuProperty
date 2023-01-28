@@ -64,9 +64,9 @@ const TilesHelper = {
           dataItem: (props) => props.data.data.workplace.name,
         },
         {
-          value: "categoryId",
-          label: LsiData.category,
-          dataItem: (props) => props.data.data.category.name,
+          value: "notes",
+          label: LsiData.notes,
+          dataItem: (props) => props.data.data.notes,
         },
         {
           value: "dropdown",

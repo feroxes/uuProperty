@@ -31,10 +31,6 @@ class UpdateAbl {
       throw new Errors.InventoryItemDoesNotExist({ uuAppErrorMap }, { id: dtoIn.id });
     }
 
-    if (States.FINAL_STATES.includes(inventoryItem.state)) {
-      throw new Errors.InventoryItemIsOnFinalState({ uuAppErrorMap }, { state: inventoryItem.state });
-    }
-
     const workplace = await this.workplaceDao.get(awid, inventoryItem.workplaceId);
 
     let workplaceForUpdate;

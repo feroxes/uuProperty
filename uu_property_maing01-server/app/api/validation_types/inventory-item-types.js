@@ -8,7 +8,7 @@ const inventoryItemCreateDtoInType = shape({
   workplaceId: id().isRequired(),
   categoryId: id().isRequired(),
   userUuIdentity: uuIdentity(),
-  inventoryNumber: string().isRequired(),
+  inventoryNumber: string(),
   invoiceNumber: string(),
   price: number(0, 500000),
   currency: string(/^[A-Z]{3}$/),

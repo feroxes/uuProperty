@@ -112,14 +112,6 @@ const Update = {
     }
   },
 
-  InventoryItemIsOnFinalState: class extends PropertyMainUseCaseError {
-    constructor() {
-      super(...arguments);
-      this.code = `${Update.UC_CODE}inventoryItemIsOnFinalState`;
-      this.message = "Inventory item is on final state and can not be updated.";
-    }
-  },
-
   InventoryItemAlreadyExists: class extends PropertyMainUseCaseError {
     constructor() {
       super(...arguments);

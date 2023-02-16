@@ -5,6 +5,7 @@ const { DaoFactory } = require("uu_appg01_server").ObjectStore;
 const { ValidationHelper } = require("uu_appg01_server").AppServer;
 const Errors = require("../../api/errors/inventory-item-error.js").Create;
 const Warnings = require("../../api/warnings/inventory-item-warnings.js").Create;
+const uuObjectCode = require("../../helpers/uu-object-code.js");
 const { Schemas, ErrorCodes, States } = require("../../helpers/constants.js");
 
 class CreateAbl {
@@ -26,6 +27,7 @@ class CreateAbl {
     );
 
     dtoIn.state ??= States.ON_STORAGE;
+    dtoIn.inventoryNumber ??= uuObjectCode.generate();
 
     const location = await this.locationDao.get(awid, dtoIn.locationId);
     if (!location) {

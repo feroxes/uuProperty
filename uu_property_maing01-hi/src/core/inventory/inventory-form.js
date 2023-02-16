@@ -171,7 +171,7 @@ export const InventoryFrom = createVisualComponent({
           <FormText
             name="inventoryNumber"
             label={<Lsi lsi={LsiData.inventoryNumber} />}
-            required
+            required={!!inventoryItem}
             initialValue={inventoryItem && inventoryItem.inventoryNumber}
           />
           <FormText
